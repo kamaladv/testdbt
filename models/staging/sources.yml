@@ -1,0 +1,39 @@
+version: 2
+
+sources:
+    - name: oncore_src
+      database: DATALAKE_RAW
+      schema: oncore_int_raw_data_analytics
+      tables:
+       - name: organization
+       - name: pcl_oag_accessible_org
+       - name: pcl_staff_role_org_access_grp
+       - name: pcl_organization_access_group
+       - name: smrs_pcl_staff_role
+       - name: pf_code
+       - name: pcl_staff_rand_access_config 
+       - name: onc_pcl_effort_entry
+       - name: smrs_pcl_detail
+       - name: oncore_configs
+       - name: onc_pcl_management_group
+       - name: onc_org_unit_management_group
+       - name: onc_organizational_unit
+       - name: onc_management_group
+
+
+             
+      
+models:
+    - name: VW_STAGE_EFFORT_TRACKING_ENTRY
+      description: "View Creation"
+      columns:
+          - name: effort_tracking_entry_id
+            description: "The primary key for this table"
+            tests:
+                - unique
+                - not_null
+          - name: protocol_id
+            description: "protocol_id"
+            tests:
+                - unique
+                - not_null
