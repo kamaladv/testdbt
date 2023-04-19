@@ -1,0 +1,19 @@
+version: 2
+
+models:
+    - name: stg_smrs_pcl_staff_role
+      description: "stg_smrs_pcl_staff_role"
+
+    - name: VW_STAGE_PROTOCOL_STAFF
+      description: "view creation"
+      columns:
+          - name: protocol_staff_role_id
+            description: "The primary key for this table"
+            tests:
+                - unique
+                - not_null
+          - name: protocol_id
+            description: "protocol_id"
+            tests:
+                - unique
+                - not_null
