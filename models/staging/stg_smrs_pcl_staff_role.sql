@@ -40,7 +40,7 @@ from
 join
   {{ source('oncore_src','pf_code') }} r on r.category = 'STAFF_ROLE' and sr.staff_role = r.code_id
 left join
-  {{ ref('smrs_pcl_staff_role1') }} random_admin on sr.protocol_staff_role_id = random_admin.protocol_staff_role_id
+  {{ ref('pcl_staff_rand_access_config') }} random_admin on sr.protocol_staff_role_id = random_admin.protocol_staff_role_id
 left join
   {{ ref('stg_data_for_addtl_protocol_org') }} apo on sr.protocol_staff_role_id = apo.protocol_staff_role_id
 where

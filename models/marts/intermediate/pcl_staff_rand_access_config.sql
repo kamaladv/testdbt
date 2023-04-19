@@ -1,8 +1,12 @@
-with source as (
-    select * from {{ source('oncore_src','pcl_staff_rand_access_config') }}
-),
 
-pcl_staff_role as (
+
+{{
+    config(
+        materialized='ephemeral'
+    )
+}}
+
+with pcl_staff_role as (
     select
   protocol_staff_role_id,
   
@@ -26,7 +30,7 @@ pcl_staff_role as (
     when random_admin.see_blinded_treatment = 0 then 'No'
     else 'Not applicable'
   end can_see_blinded_treatment
-  from source 
-  where __fivetran_deleted = false )
+  from {{ source('oncore_src','pcl_staff_rand_access_config') }} random_admin
+  where _fivetran_deleted = false )
 
   select * from pcl_staff_role
